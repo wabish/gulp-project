@@ -1,0 +1,26 @@
+{
+  "name": "gulp-project",
+  "version": "0.0.1",
+  "author": "cobish",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-contrib-copy": "^0.1.2",
+    "gulp-css-spritesmith": "0.0.5",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-include-html": "^1.0.11",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-requirejs-optimize": "^0.3.2",
+    "gulp-rev": "^7.0.0",
+    "gulp-rev-collector": "^1.0.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1",
+    "run-sequence": "^1.1.5",
+  }
+}
