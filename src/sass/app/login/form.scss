@@ -1,0 +1,24 @@
+.login-form {
+    margin: 50px auto;
+    padding: 20px;
+    width: 250px;
+    background: #ccffcc;
+
+    fieldset {
+        border: 0;
+    }
+
+    legend {
+        display: none;
+    }
+
+    p {
+        height: 25px;
+        line-height: 25px;
+    }
+
+    .submit-btn {
+        display: block;
+        margin: 10px auto 0 auto;
+    }
+}

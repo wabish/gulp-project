@@ -1,17 +1,17 @@
 module.exports = function (gulp, plugins, config, browserSync) {
     // sass编译
     gulp.task('sass', function() {
-        return gulp.src(config.dev + 'sass/**/*.scss')
+        return gulp.src(config.src + 'sass/page/*.scss')
             .pipe(plugins.sourcemaps.init())
             .pipe(plugins.sass({outputStyle: 'expanded'}).on('error', plugins.sass.logError))
             .pipe(plugins.sourcemaps.write())
-            .pipe(gulp.dest(config.dev + 'css'))
+            .pipe(gulp.dest(config.dist + 'css/page'))
             .pipe(browserSync.reload({stream: true}));
     });
 
     // 复制css到tmp目录
     gulp.task('copy:css', function() {
-        gulp.src(config.dev + 'css/**/*.css')
+        gulp.src(config.src + 'css/**/*.css')
             .pipe(plugins.contribCopy())
             .pipe(gulp.dest(config.tmp + 'dev/css'));
     });

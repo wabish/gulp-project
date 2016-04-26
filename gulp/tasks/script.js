@@ -1,7 +1,7 @@
 module.exports = function (gulp, plugins, config) {
     // requirejs配置
     var rjsConfig = {
-        mainConfigFile: config.dev + 'js/config.js',
+        mainConfigFile: config.src + 'js/config.js',
         //optimize: 'none',
         optimize: 'uglify2',
         exclude: [
@@ -17,9 +17,9 @@ module.exports = function (gulp, plugins, config) {
     // js检错
     gulp.task('jshint', function() {
         return gulp.src([
-                config.dev + 'js/**/*.js',
-                '!' + config.dev + 'js/config.js',
-                '!' + config.dev + 'js/lib/**/*.js',
+                config.src + 'js/**/*.js',
+                '!' + config.src + 'js/config.js',
+                '!' + config.src + 'js/lib/**/*.js',
 
                 // 临时处理
                 '!dev/js/public.js'
@@ -30,35 +30,35 @@ module.exports = function (gulp, plugins, config) {
 
     // active目录打包依赖的js文件
     gulp.task('requirejs:active', function() {
-        return gulp.src(config.dev + 'js/mod/active/*.js')
+        return gulp.src(config.src + 'js/mod/active/*.js')
             .pipe(plugins.requirejsOptimize(rjsConfig))
             .pipe(gulp.dest(config.tmp + 'js/mod/active'));
     });
 
     // other目录打包依赖的js文件
     gulp.task('requirejs:other', function() {
-        return gulp.src(config.dev + 'js/mod/other/*.js')
+        return gulp.src(config.src + 'js/mod/other/*.js')
             .pipe(plugins.requirejsOptimize(rjsConfig))
             .pipe(gulp.dest(config.tmp + 'js/mod/other'));
     });
 
     // pay目录打包依赖的js文件
     gulp.task('requirejs:pay', function() {
-        return gulp.src(config.dev + 'js/mod/pay/*.js')
+        return gulp.src(config.src + 'js/mod/pay/*.js')
             .pipe(plugins.requirejsOptimize(rjsConfig))
             .pipe(gulp.dest(config.tmp + 'js/mod/pay'));
     });
 
     // register目录打包依赖的js文件
     gulp.task('requirejs:register', function() {
-        return gulp.src(config.dev + 'js/mod/register/*.js')
+        return gulp.src(config.src + 'js/mod/register/*.js')
             .pipe(plugins.requirejsOptimize(rjsConfig))
             .pipe(gulp.dest(config.tmp + 'js/mod/register'));
     });
 
     // 压缩config文件到tmp目录
     gulp.task('uglify:config', function() {
-        return gulp.src(config.dev + 'js/*.js')
+        return gulp.src(config.src + 'js/*.js')
             .pipe(plugins.uglify())
             .pipe(gulp.dest(config.tmp + 'js'));
     });
@@ -74,7 +74,7 @@ module.exports = function (gulp, plugins, config) {
 
     // 复制第三方js文件到dist目录
     gulp.task('copy:js', function() {
-        return gulp.src(config.dev + 'js/lib/**/*.js')
+        return gulp.src(config.src + 'js/lib/**/*.js')
             .pipe(plugins.contribCopy())
             .pipe(gulp.dest(config.dist + 'js/lib'));
     });

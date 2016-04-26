@@ -1,14 +1,14 @@
 module.exports = function (gulp, plugins, config) {
     // html依赖替换
     gulp.task('include', function() {
-        return gulp.src(config.dev + 'html/**/*.html')
+        return gulp.src(config.src + 'html/page/*.html')
             .pipe(plugins.includeHtml())
-            .pipe(gulp.dest(config.dev + 'view'));
+            .pipe(gulp.dest(config.dist + 'html/page'));
     });
 
     // 处理前替换
     gulp.task('replace:before', function() {
-        return gulp.src(config.dev + 'view/mod/**/*.html')
+        return gulp.src(config.src + 'view/mod/**/*.html')
             .pipe(plugins.replaceTask({
                 prefix: '',
                 patterns: [{

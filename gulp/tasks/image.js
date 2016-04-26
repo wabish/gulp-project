@@ -1,9 +1,9 @@
 module.exports = function (gulp, plugins, config) {
     // 自动雪碧图
     gulp.task('autoSprite', function() {
-        return gulp.src(config.dev + 'css/mod/*.css')
+        return gulp.src(config.src + 'css/mod/*.css')
             .pipe(plugins.cssSpritesmith({
-                imagepath: config.dev + 'images/mod',
+                imagepath: config.src + 'images/mod',
                 spritedest: 'images/mod',
                 spritepath: '../../images/mod',
                 padding: 2
@@ -13,7 +13,7 @@ module.exports = function (gulp, plugins, config) {
 
     // 复制图片到tmp临时目录
     gulp.task('copy:img', function() {
-        return gulp.src(config.dev + 'images/app/**/*.{png,gif,jpg,jpeg}')
+        return gulp.src(config.src + 'images/app/**/*.{png,gif,jpg,jpeg}')
             .pipe(plugins.contribCopy())
             .pipe(gulp.dest(config.tmp + 'images/app'));
     });
