@@ -58,7 +58,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
     // 打包js文件
     gulp.task('build:js', function(cb) {
         runSequence(
-            ['requirejs:active', 'requirejs:other', 'requirejs:pay', 'requirejs:register'],
+            'requirejs',
             'uglify:config',
             'rev:js',
             'copy:js',
