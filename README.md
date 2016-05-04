@@ -23,7 +23,15 @@
 ## 目录结构与说明
 
 ``` bash
-└─ src/                   # 开发目录
+├─ gulp/                  # gulp配置目录
+    ├─ tasks              # 任务配置目录
+        ├─ image.js       # 图片配置
+        ├─ other.js       # 其它配置
+        ├─ script.js      # 脚本配置
+        ├─ style.js       # 样式配置
+        └─ view.js        # 页面配置
+    └─ config             # gulp配置文件
+├─ src/                   # 开发目录
     ├─ html/              # 存放html的目录
         ├─ app/           # 可提取复用的页面模块
         └─ page/          # 各页面入口文件
@@ -38,6 +46,9 @@
     └─ sass/              # 存放sass的目录
         ├─ app/           # 可提取复用的样式模块
         └─ page/          # 各页面入口样式文件
+├─ .jshintrc              # jshint参数配置文件
+├─ gulpfile.js            # gulp入口配置文件
+└─ package.json           # npm包管理文件
 ```
 
 ## 1. 安装 NPM

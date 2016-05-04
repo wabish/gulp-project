@@ -1,0 +1,35 @@
+{
+  "curly": true,
+  "newcap": true,
+  "eqeqeq": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "camelcase": true,
+//  "freeze": true,
+  "quotmark": true,
+  "browser": true,
+  "devel": true,
+
+  "globals": {
+    "PUBLIC": false,
+    "escape": false,
+    "unescape": false,
+
+    "module": false,
+
+    "define": false,
+    "require": false,
+    "requirejs": false,
+
+    "warmTip": false,
+    "setcookie": false,
+    "delcookie": false,
+    "otherOauth2Auth": false,
+    "showNote": false,
+    "isIDCard": false,
+    "isPhone": false,
+    "isOverseaPhone": false,
+    "isEmail": false
+  }
+}
