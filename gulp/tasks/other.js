@@ -1,3 +1,5 @@
+var runSequence = require('run-sequence');
+
 module.exports = function (gulp, plugins, config, browserSync) {
     // 删除dist目录
     gulp.task('clean:dist', function() {
@@ -36,9 +38,9 @@ module.exports = function (gulp, plugins, config, browserSync) {
     // 打包图片
     gulp.task('build:img', function(cb) {
         runSequence(
-            'copy:css',
+            'sass:tmp',
+            'copy:tmpImg',
             'autoSprite',
-            'copy:img',
             'imagemin',
             'rev:img',
             cb
@@ -69,9 +71,8 @@ module.exports = function (gulp, plugins, config, browserSync) {
     // 打包html文件
     gulp.task('build:html', function(cb) {
         runSequence(
-            'replace:before',
+            'include',
             'usemin:html',
-            'replace:after',
             cb
         );
     });

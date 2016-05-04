@@ -6,41 +6,13 @@ module.exports = function (gulp, plugins, config) {
             .pipe(gulp.dest(config.dist + 'html/page'));
     });
 
-    // 处理前替换
-    gulp.task('replace:before', function() {
-        return gulp.src(config.src + 'view/mod/**/*.html')
-            .pipe(plugins.replaceTask({
-                prefix: '',
-                patterns: [{
-                    json: {
-                        '__DEV__': '../../'
-                    }
-                }]
-            }))
-            .pipe(gulp.dest(config.tmp + 'view/mod'));
-    });
-
     // 替换已经打包的静态资源
     gulp.task('usemin:html', function() {
         return gulp.src([
                 config.tmp + 'rev/**/*.json',
-                config.tmp + 'view/**/*.html'
+                config.dist + 'html/**/*.html'
             ])
             .pipe(plugins.revCollector())
-            .pipe(gulp.dest(config.tmp + 'view'));
-    });
-
-    // 处理后替换
-    gulp.task('replace:after', function() {
-        return gulp.src(config.tmp + 'view/mod/**/*.html')
-            .pipe(plugins.replaceTask({
-                prefix: '',
-                patterns: [{
-                    json: {
-                        '../../': '__DIST__'
-                    }
-                }]
-            }))
-            .pipe(gulp.dest(config.dist + 'view/mod'));
+            .pipe(gulp.dest(config.dist + 'html'));
     });
 };
