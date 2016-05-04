@@ -10,10 +10,4 @@ module.exports = function (gulp, plugins, config) {
         return gulp.src(config.tmp, {read: false})
             .pipe(plugins.clean());
     });
-
-    // 删除rev目录
-    gulp.task('clean:rev', function() {
-        return gulp.src(config.rev, {read: false})
-            .pipe(plugins.clean());
-    });
 };

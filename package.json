@@ -1,6 +1,6 @@
 {
   "name": "gulp-project",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "cobish",
   "blog": "http://cobish.github.io",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "gulp-include-html": "^1.0.11",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.2",
+    "gulp-newer": "^1.1.0",
     "gulp-replace-task": "^0.11.0",
     "gulp-requirejs-optimize": "^0.3.2",
     "gulp-rev": "^7.0.0",

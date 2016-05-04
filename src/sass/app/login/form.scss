@@ -1,5 +1,7 @@
+$loginSprite: "../../images/sprite/login/";
+
 .login-form {
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     width: 250px;
     background: #ccffcc;
@@ -20,5 +22,45 @@
     .submit-btn {
         display: block;
         margin: 10px auto 0 auto;
+    }
+}
+
+.other-login-box {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: -20px;
+    font-size: 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        margin-left: 40px;
+        width: 40px;
+        height: 40px;
+        text-indent: -99em;
+    }
+
+    .qq-login {
+        background: url($loginSprite + "qq.png");
+
+        &:hover {
+            background: url($loginSprite + "qq_hover.png");
+        }
+    }
+
+    .weibo-login {
+        background: url($loginSprite + "weibo.png");
+
+        &:hover {
+            background: url($loginSprite + "weibo_hover.png");
+        }
+    }
+
+    .baidu-login {
+        background: url($loginSprite + "baidu.png");
+
+        &:hover {
+            background: url($loginSprite + "baidu_hover.png");
+        }
     }
 }

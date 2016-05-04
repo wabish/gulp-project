@@ -18,11 +18,7 @@ module.exports = function (gulp, plugins, config) {
     gulp.task('jshint', function() {
         return gulp.src([
                 config.src + 'js/**/*.js',
-                '!' + config.src + 'js/config.js',
-                '!' + config.src + 'js/lib/**/*.js',
-
-                // 临时处理
-                '!dev/js/public.js'
+                '!' + config.src + 'js/lib/**/*.js'
             ])
             .pipe(plugins.jshint())
             .pipe(plugins.jshint.reporter());
@@ -74,8 +70,13 @@ module.exports = function (gulp, plugins, config) {
 
     // 复制第三方js文件到dist目录
     gulp.task('copy:js', function() {
-        return gulp.src(config.src + 'js/lib/**/*.js')
+        // return gulp.src(config.src + 'js/lib/**/*.js')
+        //     .pipe(plugins.contribCopy())
+        //     .pipe(gulp.dest(config.dist + 'js/lib'));
+        
+        return gulp.src(config.src + 'js/**/*.js')
+            .pipe(plugins.newer(config.dist + 'js'))
             .pipe(plugins.contribCopy())
-            .pipe(gulp.dest(config.dist + 'js/lib'));
+            .pipe(gulp.dest(config.dist + 'js'));
     });
 };

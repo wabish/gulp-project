@@ -13,9 +13,14 @@ module.exports = function (gulp, plugins, config) {
 
     // 复制图片到tmp临时目录
     gulp.task('copy:img', function() {
-        return gulp.src(config.src + 'images/app/**/*.{png,gif,jpg,jpeg}')
+        // return gulp.src(config.src + 'images/app/**/*.{png,gif,jpg,jpeg}')
+        //     .pipe(plugins.contribCopy())
+        //     .pipe(gulp.dest(config.tmp + 'images/app'));
+
+        return gulp.src(config.src + 'images/**/*.{png,gif,jpg,jpeg}')
+            .pipe(plugins.newer(config.dist + 'images'))
             .pipe(plugins.contribCopy())
-            .pipe(gulp.dest(config.tmp + 'images/app'));
+            .pipe(gulp.dest(config.dist + 'images'));
     });
 
     // 压缩图片

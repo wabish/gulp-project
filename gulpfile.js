@@ -28,7 +28,7 @@ gulp.task('help',function () {
     console.log('*   gulp sass        sass本地编译                    *');
     console.log('*   gulp jshint      js语法检测                      *');
     console.log('*   gulp include     html包含依赖编译                *');
-    console.log('*   gulp watch       开发监控，浏览器不自动刷新      *');
+    console.log('*   gulp dev         开发监控，浏览器不自动刷新      *');
     console.log('*   gulp serve       开发监控，浏览器自动刷新        *');
     console.log('*   gulp build       打包上线                        *');
     console.log('*                                                    *');
@@ -37,21 +37,43 @@ gulp.task('help',function () {
 
 // 开发监控，浏览器不自动刷新
 gulp.task('watch', function() {
-    gulp.watch(config.dev + 'sass/**/*.scss', ['sass']);
-    gulp.watch(config.dev + 'js/**/*.js', ['jshint']);
-    gulp.watch(config.dev + 'html/**/*.html', ['include']);
+    gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
+    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
+    gulp.watch(config.src + 'html/**/*.html', ['include']);
+});
+
+gulp.task('dev', function(cb) {
+    runSequence(
+        'clean:dist',
+        'clean:tmp',
+        ['copy:img', 'sass', 'jshint', 'copy:js', 'include'],
+        'watch',
+        cb
+    );
 });
 
 // 开发监控，浏览器自动刷新
-gulp.task('serve', function() {
+gulp.task('reload', function() {
     browserSync.init({
         proxy: config.proxy
     });
 
-    gulp.watch(config.dev + 'html/**/*.html', ['include']);
-    gulp.watch(config.dev + 'sass/**/*.scss', ['sass']);
-    gulp.watch(config.dev + 'js/**/*.js', ['jshint']).on('change', browserSync.reload);
-    gulp.watch(config.dev + 'view/**/*.html').on('change', browserSync.reload);
+    gulp.watch(config.src + 'html/**/*.html', ['include']);
+    gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
+    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']).on('change', browserSync.reload);
+    gulp.watch(config.src + 'view/**/*.html').on('change', browserSync.reload);
+});
+
+gulp.task('serve', function(cb) {
+    runSequence(
+        'copy:img',
+        'sass',
+        'jshint',
+        'copy:js',
+        'include',
+        'reload',
+        cb
+    );
 });
 
 // 打包图片
@@ -84,7 +106,7 @@ gulp.task('build:js', function(cb) {
         'rev:js',
         'copy:js',
         cb
-    )
+    );
 });
 
 // 打包html文件
