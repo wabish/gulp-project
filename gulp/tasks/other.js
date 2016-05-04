@@ -48,8 +48,8 @@ module.exports = function (gulp, plugins, config, browserSync) {
     // 打包css文件
     gulp.task('build:css', function(cb) {
         runSequence(
-            'sass:dist',
             'usemin:css',
+            'sass:dist',
             'rev:css',
             cb
         );

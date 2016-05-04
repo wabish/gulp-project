@@ -9,13 +9,6 @@ module.exports = function (gulp, plugins, config, browserSync) {
             .pipe(browserSync.reload({stream: true}));
     });
 
-    // 复制css到tmp目录
-    // gulp.task('copy:css', function() {
-    //     gulp.src(config.src + 'css/**/*.css')
-    //         .pipe(plugins.contribCopy())
-    //         .pipe(gulp.dest(config.tmp + 'dev/css'));
-    // });
-
     // sass编译到tmp
     gulp.task('sass:tmp', function() {
         return gulp.src(config.src + 'sass/page/*.scss')
@@ -25,7 +18,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
 
     // 压缩css
     gulp.task('sass:dist', function() {
-        return gulp.src(config.tmp + 'dev/css/**/*.css')
+        return gulp.src(config.tmp + 'css/**/*.css')
             .pipe(plugins.sass({outputStyle: 'compressed'}).on('error', plugins.sass.logError))
             .pipe(gulp.dest(config.tmp + 'css'));
     });
