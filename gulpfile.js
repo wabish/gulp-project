@@ -55,22 +55,23 @@ gulp.task('dev', function(cb) {
 // 开发监控，浏览器自动刷新
 gulp.task('reload', function() {
     browserSync.init({
-        proxy: config.proxy
+        server: {
+            baseDir: './'
+        }
     });
 
     gulp.watch(config.src + 'html/**/*.html', ['include']);
     gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
-    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']).on('change', browserSync.reload);
-    gulp.watch(config.src + 'view/**/*.html').on('change', browserSync.reload);
+    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
+    gulp.watch(config.dist + 'js/**/*.js').on('change', browserSync.reload);
+    gulp.watch(config.dist + 'html/**/*.html').on('change', browserSync.reload);
 });
 
 gulp.task('serve', function(cb) {
     runSequence(
-        'copy:img',
-        'sass',
-        'jshint',
-        'copy:js',
-        'include',
+        'clean:dist',
+        'clean:tmp',
+        ['copy:img', 'sass', 'jshint', 'copy:js', 'include'],
         'reload',
         cb
     );
