@@ -10,10 +10,17 @@ module.exports = function (gulp, plugins, config, browserSync) {
     });
 
     // 复制css到tmp目录
-    gulp.task('copy:css', function() {
-        gulp.src(config.src + 'css/**/*.css')
-            .pipe(plugins.contribCopy())
-            .pipe(gulp.dest(config.tmp + 'dev/css'));
+    // gulp.task('copy:css', function() {
+    //     gulp.src(config.src + 'css/**/*.css')
+    //         .pipe(plugins.contribCopy())
+    //         .pipe(gulp.dest(config.tmp + 'dev/css'));
+    // });
+
+    // sass编译到tmp
+    gulp.task('sass:tmp', function() {
+        return gulp.src(config.src + 'sass/page/*.scss')
+            .pipe(plugins.sass({outputStyle: 'expanded'}).on('error', plugins.sass.logError))
+            .pipe(gulp.dest(config.tmp + 'css/page'));
     });
 
     // 压缩css

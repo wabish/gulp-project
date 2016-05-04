@@ -36,12 +36,6 @@ gulp.task('help',function () {
 });
 
 // 开发监控，浏览器不自动刷新
-gulp.task('watch', function() {
-    gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
-    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
-    gulp.watch(config.src + 'html/**/*.html', ['include']);
-});
-
 gulp.task('dev', function(cb) {
     runSequence(
         'clean:dist',
@@ -53,69 +47,12 @@ gulp.task('dev', function(cb) {
 });
 
 // 开发监控，浏览器自动刷新
-gulp.task('reload', function() {
-    browserSync.init({
-        server: {
-            baseDir: './'
-        }
-    });
-
-    gulp.watch(config.src + 'html/**/*.html', ['include']);
-    gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
-    gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
-    gulp.watch(config.dist + 'js/**/*.js').on('change', browserSync.reload);
-    gulp.watch(config.dist + 'html/**/*.html').on('change', browserSync.reload);
-});
-
 gulp.task('serve', function(cb) {
     runSequence(
         'clean:dist',
         'clean:tmp',
         ['copy:img', 'sass', 'jshint', 'copy:js', 'include'],
         'reload',
-        cb
-    );
-});
-
-// 打包图片
-gulp.task('build:img', function(cb) {
-    runSequence(
-        'copy:css',
-        'autoSprite',
-        'copy:img',
-        'imagemin',
-        'rev:img',
-        cb
-    )
-});
-
-// 打包css文件
-gulp.task('build:css', function(cb) {
-    runSequence(
-        'sass:dist',
-        'usemin:css',
-        'rev:css',
-        cb
-    );
-});
-
-// 打包js文件
-gulp.task('build:js', function(cb) {
-    runSequence(
-        ['requirejs:active', 'requirejs:other', 'requirejs:pay', 'requirejs:register'],
-        'uglify:config',
-        'rev:js',
-        'copy:js',
-        cb
-    );
-});
-
-// 打包html文件
-gulp.task('build:html', function(cb) {
-    runSequence(
-        'replace:before',
-        'usemin:html',
-        'replace:after',
         cb
     );
 });
