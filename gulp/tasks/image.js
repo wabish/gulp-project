@@ -46,13 +46,4 @@ module.exports = function (gulp, plugins, config) {
             .pipe(plugins.rev.manifest())
             .pipe(gulp.dest(config.tmp + 'rev/images'));
     });
-
-    // 添加图片版本号
-    // gulp.task('rev:spriteImg', function() {
-    //     return gulp.src(config.tmp + 'images/sprite/*.{png,gif,jpg,jpeg}')
-    //         .pipe(plugins.rev())
-    //         .pipe(gulp.dest(config.dist + 'images/sprite'))
-    //         .pipe(plugins.rev.manifest())
-    //         .pipe(gulp.dest(config.tmp + 'rev/images'));
-    // });
 };

@@ -44,7 +44,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
             'imagemin',
             'rev:img',
             cb
-        )
+        );
     });
 
     // 打包css文件
