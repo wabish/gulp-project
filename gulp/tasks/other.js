@@ -17,6 +17,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
     gulp.task('watch', function() {
         gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
         gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
+        gulp.watch(config.src + 'images/**/*.{png,gif,jpg,jpeg}', ['copy:img']);
         gulp.watch(config.src + 'html/**/*.html', ['include']);
     });
 
@@ -31,6 +32,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
         gulp.watch(config.src + 'html/**/*.html', ['include']);
         gulp.watch(config.src + 'sass/**/*.scss', ['sass']);
         gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
+        gulp.watch(config.src + 'images/**/*.{png,gif,jpg,jpeg}', ['copy:img']);
         gulp.watch(config.dist + 'js/**/*.js').on('change', browserSync.reload);
         gulp.watch(config.dist + 'html/**/*.html').on('change', browserSync.reload);
     });
