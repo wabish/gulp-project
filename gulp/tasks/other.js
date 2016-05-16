@@ -65,7 +65,7 @@ module.exports = function (gulp, plugins, config, browserSync) {
             'requirejs',
             'uglify:config',
             'rev:js',
-            'copy:js',
+            'copy:libJs',
             cb
         );
     });
