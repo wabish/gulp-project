@@ -1,4 +1,4 @@
-# gulp-demo
+# gulp-project
 
 ## 本示例目标
 
@@ -17,8 +17,9 @@
 
 ## 示例依赖
 
-* RequireJs
-* Sass
+* gulp
+* requirejs
+* sass
 
 ## 目录结构与说明
 
