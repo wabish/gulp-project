@@ -3,6 +3,7 @@ module.exports = function (gulp, plugins, config) {
     gulp.task('jshint', function() {
         return gulp.src([
                 config.src + 'js/**/*.js',
+                '!' + config.src + 'js/config.js',
                 '!' + config.src + 'js/lib/**/*.js'
             ])
             .pipe(plugins.jshint())
@@ -44,7 +45,6 @@ module.exports = function (gulp, plugins, config) {
     gulp.task('copy:js', function() {
         return gulp.src(config.src + 'js/**/*.js')
             .pipe(plugins.newer(config.dist + 'js'))
-            .pipe(plugins.contribCopy())
             .pipe(gulp.dest(config.dist + 'js'));
     });
 
