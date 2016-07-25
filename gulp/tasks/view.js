@@ -1,9 +1,10 @@
-module.exports = function (gulp, plugins, config) {
+module.exports = function (gulp, plugins, config, browserSync) {
     // html依赖替换
     gulp.task('include', function() {
         return gulp.src(config.src + 'html/page/*.html')
             .pipe(plugins.includeHtml())
-            .pipe(gulp.dest(config.dist + 'html/page'));
+            .pipe(gulp.dest(config.dist + 'html/page'))
+            .pipe(browserSync.reload({stream: true}));
     });
 
     // 替换已经打包的静态资源

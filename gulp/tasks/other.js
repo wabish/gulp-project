@@ -34,7 +34,6 @@ module.exports = function (gulp, plugins, config, browserSync) {
         gulp.watch(config.src + 'js/**/*.js', ['jshint', 'copy:js']);
         gulp.watch(config.src + 'images/**/*.{png,gif,jpg,jpeg}', ['copy:img']);
         gulp.watch(config.dist + 'js/**/*.js').on('change', browserSync.reload);
-        gulp.watch(config.dist + 'html/**/*.html').on('change', browserSync.reload);
     });
 
     // 打包图片
