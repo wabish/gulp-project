@@ -57,6 +57,7 @@ gulp.task('serve', function(cb) {
     );
 });
 
+// 打包上线
 gulp.task('build', function(cb) {
     runSequence(
         'clean:dist',
